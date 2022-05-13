@@ -1,5 +1,10 @@
 package game.logic;
 
-public class CaseQuestion {
+abstract class CaseQuestion extends Case{
 
+	
+	
+	public static CaseQuestion genQuestion() {
+		return null;
+	}
 }
