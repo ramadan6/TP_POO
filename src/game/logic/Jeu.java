@@ -45,7 +45,7 @@ public class Jeu {
 		// Generer la fenetre
 		return;
 	}
-	public void consulterScores(LinkedList<ScoreRecord> scores) { // ArrayList de [ joueur, score] 
+	public void consulterScores(LinkedList<ScoreRecord> scores) { // LinkedList de [ joueur, score] 
 		// Fonction pour fenetre des scores
 	}
 	
