@@ -8,7 +8,7 @@ public enum Couleur {
 	Orange,
 	Bleu,
 	Rose,
-	Noie,
+	Noir,
 	Blanc
 	
 }
