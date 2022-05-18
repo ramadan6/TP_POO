@@ -2,7 +2,8 @@ package game.logic;
 
 abstract class CaseQuestion extends Case{
 
-	private boolean correct;
+	
+	protected boolean correct;
 	
 	public CaseQuestion(int num) {
 		super(num);

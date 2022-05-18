@@ -5,6 +5,7 @@ import java.util.*;
 public class Session {
 
 	private final static int MAX_CASES = 100;
+	private final static int NON_AVANCEMENT = -100;
 	private Joueur joueur;
 	private int score;
 	private Case caseCourante;
@@ -23,7 +24,9 @@ public class Session {
 	}
 	
 	// getter/setter
-	
+	public static int getNonAvancement() {
+		return NON_AVANCEMENT;
+	}
 	public static int getMaxCases() {
 		return MAX_CASES;
 	}
@@ -88,26 +91,30 @@ public class Session {
 	private boolean verifierCaseChoisie(Case caseDes, Case choixJoueur) {
 		return caseDes == choixJoueur;
 	}
-	public Case avancer(Case c) { // avance a c et retourne a quelle case il va etre dirige ( peut etre null)
+	public int avancer(int indice) { // avance a c et retourne a quelle case il va etre dirige ( peut etre null)
 		// fonction pour avancer graphiquement
-		caseCourante = c;
-		if(c == plateau.get(MAX_CASES - 1))
+		caseCourante = plateau.get(indice);
+		if(caseCourante == plateau.get(MAX_CASES - 1))
 			finPartie = true;
-		score += c.changerScore();
-		return c.action(plateau);
+		score += plateau.get(indice).changerScore();
+		int incriment  = plateau.get(indice).action(plateau);
+		if(indice + incriment < MAX_CASES) return indice + incriment;
+		if(indice + incriment < 0) return 0;
+		return indice - incriment;
 	}
 
-	public void jouer(Case c) {
-		if(c == null)
+	public void jouer(int indice) {
+		Case c = plateau.get(indice);
+		if(indice == NON_AVANCEMENT)
 			return;
 		// eventListner for button qui vas verifier qui est egale a c
 		Case choixJoueur;
-		if(verifierCaseChoisie(c, choixJoueur){
-			jouer(avancer(c));
+		if(verifierCaseChoisie(c, choixJoueur)){
+			jouer(avancer(indice));
 		}
 		else {
 			// message d'erreur
-			jouer(c);
+			jouer(indice);
 		}
 	}
 	
@@ -115,9 +122,9 @@ public class Session {
 		int nbCaseAvancement = dice.rouler();
 		int numCaseCourante = caseCourante.getNum();
 		if(numCaseCourante + nbCaseAvancement > MAX_CASES)
-			jouer(plateau.get(numCaseCourante + (numCaseCourante + nbCaseAvancement - MAX_CASES)));
+			jouer(numCaseCourante + (numCaseCourante + nbCaseAvancement - MAX_CASES));
 		else
-			jouer(plateau.get(numCaseCourante + nbCaseAvancement));
+			jouer(numCaseCourante + nbCaseAvancement);
 	}
 	
 	

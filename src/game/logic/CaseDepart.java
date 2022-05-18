@@ -1,7 +1,12 @@
 package game.logic;
 
+import java.util.List;
+
 public class CaseDepart extends Case{
 
+	private static final int changementScore = 0;
+	private static final int changementCase = Session.getNonAvancement();
+	
 	public CaseDepart(int num) {
 		super(num);
 		super.setCouleur(Couleur.Jaune);
@@ -9,13 +14,12 @@ public class CaseDepart extends Case{
 
 	@Override
 	public int changerScore() {
-		return 0;
+		return changementScore;
 	}
 
 	@Override
-	Case action() {
-		// TODO Auto-generated method stub
-		return null;
+	public int action() {
+		return changementCase;
 	}
 	
 }

@@ -1,5 +1,7 @@
 package game.logic;
 
+import java.util.List;
+
 public class CaseBonus extends Case{
 
 	private final int changementScoreBonus = 10;
@@ -16,8 +18,7 @@ public class CaseBonus extends Case{
 	}
 
 	@Override
-	public Case action(List<Case> plateau) {
-		// TODO Auto-generated method stub
+	public int action() {
 		return changementCaseBonus;
 	}
 	

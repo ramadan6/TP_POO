@@ -27,7 +27,7 @@ public abstract class Case {
 	}
 	
 	// methods
-	abstract int changerScore();
-	abstract Case action(List<Case> plateau);
+	public abstract int changerScore();
+	public abstract int action();
 	
 }

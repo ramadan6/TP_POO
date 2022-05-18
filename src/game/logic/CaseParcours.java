@@ -1,9 +1,11 @@
 package game.logic;
 
+import java.util.List;
+
 public class CaseParcours extends Case {
 
 	private final int changementScoreParcours = 0;
-	private final int changementCaseParcours = 0;
+	private final int changementCaseParcours = Session.getNonAvancement();
 	
 	public CaseParcours(int num) {
 		super(num);
@@ -17,6 +19,7 @@ public class CaseParcours extends Case {
 
 	@Override
 	public int action() {
+		// TODO Auto-generated method stub
 		return changementCaseParcours;
 	}
 

@@ -1,8 +1,15 @@
 package game.logic;
 
-public class CaseQuestionImage extends CaseQuestion{
-	private static final int changementScore = 10; 
+import java.util.List;
 
+public class CaseQuestionImage extends CaseQuestion{
+	
+	private static final int changementScoreGain = 10; 
+	private static final int changementScorePerte = 0; 
+	private static final int changementCaseGain = 2;
+	private static final int changementCasePerte = Session.getNonAvancement();
+	
+	
 	public CaseQuestionImage(int num) {
 		super(num);
 		this.couleur = Couleur.Rose;
@@ -11,8 +18,15 @@ public class CaseQuestionImage extends CaseQuestion{
 		return changementScore;
 	}
 	@Override
-	Case action() {
+	protected boolean questionner() {
+		boolean reponse = false;
 		// TODO Auto-generated method stub
-		return null;
+		this.correct = reponse;
+		return reponse;
+	}
+	@Override
+	public int action() {
+		if(this.correct ) return changementCaseGain;
+		return changementCasePerte;
 	}
 }
